@@ -9,4 +9,5 @@ import Foundation
 
 enum RecipeServiceError: Error {
     case invalidUrl
+    case failedToFetchRecipes
 }

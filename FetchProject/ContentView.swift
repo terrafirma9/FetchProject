@@ -16,7 +16,10 @@ struct ContentView: View {
             Text("Hello, world!")
         }
         .padding()
-        .task { try! await RecipeService().fetchRecipes() }
+        .task {
+            let recipes = try! await RecipeService().fetchRecipes(from: "https://d3jbb8n5wk0qxi.cloudfront.net/recipes.json")
+            print(recipes)
+        }
     }
 }
 

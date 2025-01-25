@@ -9,7 +9,7 @@ import Foundation
 
 protocol RecipeServiceProtocol {
     init(urlSession: URLSessionProtocol)
-    func fetchRecipes() async throws
+    func fetchRecipes() async throws -> [Recipe]
 }
 
 struct RecipeService {
@@ -19,11 +19,17 @@ struct RecipeService {
         self.urlSession = urlSession
     }
     
-    func fetchRecipes() async throws {
-        guard let url = URL(string: "https://d3jbb8n5wk0qxi.cloudfront.net/recipes.json") else {
+    func fetchRecipes(from urlString: String) async throws -> [Recipe] {
+        guard let url = URL(string: urlString) else {
             throw RecipeServiceError.invalidUrl
         }
         
-        let (_, _) = try await urlSession.data(from: url)
+        do {
+            let (data, _) = try await urlSession.data(from: url)
+            let response = try JSONDecoder().decode(RecipeResponse.self, from: data)
+            return response.recipes
+        } catch {
+            throw RecipeServiceError.failedToFetchRecipes
+        }
     }
 }
