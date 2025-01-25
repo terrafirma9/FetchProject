@@ -16,6 +16,7 @@ struct ContentView: View {
             Text("Hello, world!")
         }
         .padding()
+        .task { try! await RecipeService().fetchRecipes() }
     }
 }
 
