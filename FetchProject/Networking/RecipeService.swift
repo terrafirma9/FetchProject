@@ -8,11 +8,10 @@
 import Foundation
 
 protocol RecipeServiceProtocol {
-    init(urlSession: URLSessionProtocol)
-    func fetchRecipes() async throws -> [Recipe]
+    func fetchRecipes(from urlString: String) async throws -> [Recipe]
 }
 
-struct RecipeService {
+struct RecipeService: RecipeServiceProtocol {
     private let urlSession: URLSessionProtocol
     
     init(urlSession: URLSessionProtocol = URLSession.shared) {
@@ -26,7 +25,9 @@ struct RecipeService {
         
         do {
             let (data, _) = try await urlSession.data(from: url)
-            let response = try JSONDecoder().decode(RecipeResponse.self, from: data)
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            let response = try decoder.decode(RecipeResponse.self, from: data)
             return response.recipes
         } catch {
             throw RecipeServiceError.failedToFetchRecipes

@@ -56,22 +56,3 @@ struct RecipeServiceTests {
         #expect(urlSession.dataFromURL_fake.wasCalled == true)
     }
 }
-
-private extension Recipe {
-    static func fixture(uuid: UUID) -> Self {
-        .init(
-            cuisine: "Antarctic",
-            name: "Ice Pudding",
-            uuid: uuid,
-            photoUrlLarge: URL(string: "https://www.fetch.com/photo/large"),
-            photoUrlSmall: URL(string: "https://www.fetch.com/photo/small"),
-            sourceUrl: URL(string: "https://www.fetch.com/source/url"),
-            youtubeUrl: URL(string: "https://www.fetch.com/youtubeUrl"))
-    }
-}
-
-private extension RecipeResponse {
-    static func fixture(uuids: [UUID]) -> Self {
-        .init(recipes: uuids.map { .fixture(uuid: $0) })
-    }
-}

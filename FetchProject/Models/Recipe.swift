@@ -20,3 +20,7 @@ struct Recipe: Codable, Equatable, Sendable {
     let sourceUrl: URL?
     let youtubeUrl: URL?
 }
+
+extension Recipe: Identifiable {
+    var id: UUID { uuid }
+}

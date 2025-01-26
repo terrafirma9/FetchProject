@@ -14,20 +14,3 @@ struct FakeURLSession: URLSessionProtocol {
         dataFromURL_fake.getResponse(parameters: url)
     }
 }
-
-final class FakeCall<T, U> {
-    private let response: T
-    private(set) var parameters: U? = nil
-    private(set) var callCount: Int = 0
-    var wasCalled: Bool { callCount > 0 }
-    
-    init(with response: T) {
-        self.response = response
-    }
-    
-    func getResponse(parameters: U) -> T {
-        self.parameters = parameters
-        callCount += 1
-        return response
-    }
-}

@@ -11,4 +11,6 @@ protocol URLSessionProtocol {
     func data(from url: URL) async throws -> (Data, URLResponse)
 }
 
-extension URLSession: URLSessionProtocol {}
+extension URLSession: URLSessionProtocol {
+    static let ephemeral: URLSession = URLSession(configuration: .ephemeral)
+}
