@@ -47,7 +47,7 @@ struct RecipeView: View {
                     Button("Show details") {
                         onPresentDetails(viewModel.recipe)
                     }
-                    .buttonStyle(PlainButtonStyle())
+                    .foregroundStyle(Color.cyan)
                 }
             }
         }

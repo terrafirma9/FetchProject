@@ -32,6 +32,7 @@ struct RecipesListViewModelTests {
         
         await subject.fetchRecipes()
         #expect(service.fetchRecipes_fake.wasCalled)
+        #expect(service.fetchRecipes_fake.parameters == "https://d3jbb8n5wk0qxi.cloudfront.net/recipes.json")
         #expect(subject.loadState == .error)
     }
     
