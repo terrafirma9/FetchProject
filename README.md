@@ -2,7 +2,9 @@ Thank you for reviewing this project.
 
 ### Summary: Include screen shots or a video of your app highlighting its features
 
-_forthcoming_
+<kbd>![Simulator Screenshot - iPhone 16 Pro - 2025-01-28 at 20 34 47](https://github.com/user-attachments/assets/4ef1f07f-7188-4a9a-9256-121482d74261)
+
+<kbd>![Simulator Screenshot - iPhone 16 Pro - 2025-01-28 at 20 34 54](https://github.com/user-attachments/assets/f9b259eb-b98e-418b-bf9d-f4b22bebe1e2)
 
 ### Focus Areas: What specific areas of the project did you prioritize? Why did you choose to focus on these areas?
 
